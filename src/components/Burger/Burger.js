@@ -1,26 +1,23 @@
 import React from 'react';
-
+import { withRouter } from "react-router-dom";
 import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = (props) => {
 
-    // necessary to transfor,  object to array to use map
+    // necessary to transform object to array to use map
     let transformedIngredients = Object.keys(props.ingredients)
             .map(igKey => {
                 return [...Array(props.ingredients[igKey])].map((_, i) => {
                     return <BurgerIngredient key={igKey+i} type={igKey} />;
-                }); // [,]
+                });
             })
             .reduce((acc, el) => {
-                // console.log(el);
                 return acc.concat(el);
             }, []);
-    // console.log(transformedIngredients);
     if(transformedIngredients.length === 0) {
         transformedIngredients = <p>Please Start adding Ingredients</p>
-    }      
-    //checking if array above 
+    }
 
     return (
         <div className={classes.Burger}>
@@ -31,4 +28,5 @@ const burger = (props) => {
     );
 };
 
-export default burger;
+// using withRouter to get router props
+export default withRouter(burger);
