@@ -1,7 +1,6 @@
 import * as actionTypes from './actionTypes';
-import axios from "../../axios-orders";
+import axios from '../../axios-orders';
 
-// ACTIONS CREATORS
 export const addIngredient = ( name ) => {
     return {
         type: actionTypes.ADD_INGREDIENT,
@@ -29,14 +28,14 @@ export const fetchIngredientsFailed = () => {
     };
 };
 
-export const initIngredients =  () => {
+export const initIngredients = () => {
     return dispatch => {
-        axios.get('https://burguer-builder-8ce37.firebaseio.com/ingredients.json')
-            .then(response => {
-                dispatch(setIngredients(response.data));
-            })
-            .catch(error => {
+        axios.get( 'https://burguer-builder-8ce37.firebaseio.com/ingredients.json' )
+            .then( response => {
+               dispatch(setIngredients(response.data));
+            } )
+            .catch( error => {
                 dispatch(fetchIngredientsFailed());
-            });
+            } );
     };
 };

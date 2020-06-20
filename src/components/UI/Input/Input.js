@@ -3,7 +3,6 @@ import React from 'react';
 import classes from './Input.module.css';
 
 const input = ( props ) => {
-    
     let inputElement = null;
     const inputClasses = [classes.InputElement];
 
@@ -13,25 +12,23 @@ const input = ( props ) => {
 
     switch ( props.elementType ) {
         case ( 'input' ):
-            inputElement = <input 
-                className={inputClasses.join(' ')} 
-                {...props.elementConfig} 
+            inputElement = <input
+                className={inputClasses.join(' ')}
+                {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed}
-                />
+                onChange={props.changed} />;
             break;
         case ( 'textarea' ):
-            inputElement = <textarea 
-                className={inputClasses} 
+            inputElement = <textarea
+                className={inputClasses.join(' ')}
                 {...props.elementConfig}
-                value={props.value} 
-                onChange={props.changed}
-                />;
-            break; 
-        case ('select'):
+                value={props.value}
+                onChange={props.changed} />;
+            break;
+        case ( 'select' ):
             inputElement = (
                 <select
-                    className={inputClasses}
+                    className={inputClasses.join(' ')}
                     value={props.value}
                     onChange={props.changed}>
                     {props.elementConfig.options.map(option => (
@@ -43,12 +40,11 @@ const input = ( props ) => {
             );
             break;
         default:
-            inputElement = <input 
-                className={inputClasses} 
+            inputElement = <input
+                className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed}
-                />;
+                onChange={props.changed} />;
     }
 
     return (
